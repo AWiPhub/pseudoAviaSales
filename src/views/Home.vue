@@ -493,14 +493,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-} from "vue";
+import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 import moment, { Moment } from "moment";
 import ticketBase from "./ticktetsBASE.json";
 import optionsBase from "./options.json";
@@ -510,7 +503,7 @@ export default defineComponent({
   name: "Home",
   setup() {
     const options = ref(optionsBase);
-    const current = ref(2);
+    const current = ref(0);
     const cities = ref(citiesBase);
 
     const next = function () {
