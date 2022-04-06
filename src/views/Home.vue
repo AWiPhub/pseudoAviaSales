@@ -189,7 +189,14 @@
               type="primary"
               @click="next"
               style="margin-left: 5px"
-              :disabled="!(flyInTo.out && flyInTo.to)"
+              :disabled="
+                !(
+                  flyInTo.out &&
+                  flyInTo.to &&
+                  flyInTo.departureDate &&
+                  flyInTo.returnDate
+                )
+              "
             >
               Найти билеты
             </a-button>
@@ -503,7 +510,7 @@ export default defineComponent({
   name: "Home",
   setup() {
     const options = ref(optionsBase);
-    const current = ref(0);
+    const current = ref(2);
     const cities = ref(citiesBase);
 
     const next = function () {
