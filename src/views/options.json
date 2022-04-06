@@ -1,0 +1,54 @@
+[
+  {
+    "city": "Сочи",
+    "country": "Россия",
+    "climat": {
+      "temp": "10 °C",
+      "wind": "Слабый ветер",
+      "precipitation": "Дожди"
+    },
+    "hotels": [
+      {
+        "name": "City Park Hotel Sochi",
+        "priceDay": 3800,
+        "rate": 9.1
+      },
+      {
+        "name": "Гостиница Грейс Арли",
+        "priceDay": 1835,
+        "rate": 9.3
+      },
+      {
+        "name": "Апарт-отель Метрополь",
+        "priceDay": 6700,
+        "rate": 9.4
+      }
+    ]
+  },
+  {
+    "city": "Анталия",
+    "country": "Турция",
+    "climat": {
+      "temp": "19 °C",
+      "wind": "Без ветра",
+      "precipitation": "Солнечно"
+    },
+    "hotels": [
+      {
+        "name": "Kristal Beach",
+        "priceDay": 1807,
+        "rate": 8.5
+      },
+      {
+        "name": "Beyaz Melek Hotel",
+        "priceDay": 1715,
+        "rate": 8.7
+      },
+      {
+        "name": "Denizhan Hotel",
+        "priceDay": 1291,
+        "rate": 8.9
+      }
+    ]
+  }
+]
