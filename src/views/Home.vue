@@ -4,10 +4,10 @@
       <a-col class="steps">
         <a-steps direction="vertical" :current="current">
           <a-step title="Студент" />
-          <a-step title="Клиент" />
           <a-step title="Информация о полёте" />
           <a-step title="Билеты " />
           <a-step title="Отель" />
+          <a-step title="Клиент" />
           <a-step title="Детали" />
           <a-step title="Итог" />
         </a-steps>
@@ -34,51 +34,6 @@
         </template>
 
         <template v-if="current == 1">
-          <a-card title="Информация о клиенте" style="width: 700px">
-            <a-form
-              :model="clientInfo"
-              :label-col="{ span: 4 }"
-              :wrapper-col="{ span: 18 }"
-            >
-              <a-form-item label="Фамилия">
-                <a-input v-model:value="clientInfo.surname" />
-              </a-form-item>
-              <a-form-item label="Имя">
-                <a-input v-model:value="clientInfo.name" />
-              </a-form-item>
-              <a-form-item label="Отчество">
-                <a-input v-model:value="clientInfo.patronymic" />
-              </a-form-item>
-              <a-form-item label="Адрес">
-                <a-textarea v-model:value="clientInfo.address" :rows="4" />
-              </a-form-item>
-              <a-form-item label="Телефон">
-                <a-input v-model:value="clientInfo.phone" />
-              </a-form-item>
-            </a-form>
-          </a-card>
-
-          <a-row type="flex" justify="center" style="margin-top: 20px">
-            <a-button @click="prev" style="margin-right: 5px">Назад</a-button>
-            <a-button
-              type="primary"
-              @click="next"
-              style="margin-left: 5px"
-              :disabled="
-                !(
-                  clientInfo.surname &&
-                  clientInfo.name &&
-                  clientInfo.patronymic &&
-                  clientInfo.phone
-                )
-              "
-            >
-              Дальше
-            </a-button>
-          </a-row>
-        </template>
-
-        <template v-if="current == 2">
           <a-row>
             <a-col>
               <a-card title="Перелёт" style="width: 600px; margin-left: 10px">
@@ -203,7 +158,7 @@
           </a-row>
         </template>
 
-        <template v-if="current == 3">
+        <template v-if="current == 2">
           <div class="ticketsList" :style="{ marginTop: '15px' }">
             <template v-if="foundedTickets.length == 0">
               <a-typography-title :level="3" :style="{ marginLeft: '25px' }">
@@ -324,7 +279,7 @@
           </a-row>
         </template>
 
-        <template v-if="current == 4">
+        <template v-if="current == 3">
           <div class="ticketsList" :style="{ marginTop: '15px' }">
             <template v-if="foundedHotels.length == 0">
               <a-typography-title :level="3">
@@ -397,6 +352,51 @@
             <a-button @click="skip" style="margin-left: 5px"
               >Пропустить</a-button
             >
+          </a-row>
+        </template>
+
+        <template v-if="current == 4">
+          <a-card title="Информация о клиенте" style="width: 700px">
+            <a-form
+              :model="clientInfo"
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 18 }"
+            >
+              <a-form-item label="Фамилия">
+                <a-input v-model:value="clientInfo.surname" />
+              </a-form-item>
+              <a-form-item label="Имя">
+                <a-input v-model:value="clientInfo.name" />
+              </a-form-item>
+              <a-form-item label="Отчество">
+                <a-input v-model:value="clientInfo.patronymic" />
+              </a-form-item>
+              <a-form-item label="Адрес">
+                <a-textarea v-model:value="clientInfo.address" :rows="4" />
+              </a-form-item>
+              <a-form-item label="Телефон">
+                <a-input v-model:value="clientInfo.phone" />
+              </a-form-item>
+            </a-form>
+          </a-card>
+
+          <a-row type="flex" justify="center" style="margin-top: 20px">
+            <a-button @click="prev" style="margin-right: 5px">Назад</a-button>
+            <a-button
+              type="primary"
+              @click="next"
+              style="margin-left: 5px"
+              :disabled="
+                !(
+                  clientInfo.surname &&
+                  clientInfo.name &&
+                  clientInfo.patronymic &&
+                  clientInfo.phone
+                )
+              "
+            >
+              Дальше
+            </a-button>
           </a-row>
         </template>
 
@@ -507,7 +507,7 @@ export default defineComponent({
     const cities = ref(citiesBase);
 
     const next = function () {
-      if (current.value == 2) {
+      if (current.value == 1) {
         search();
       }
       current.value = current.value + 1;
@@ -611,7 +611,7 @@ export default defineComponent({
     };
 
     watch(current, () => {
-      if (current.value == 3) {
+      if (current.value == 2) {
         foundedHotels.value = [];
       }
     });
