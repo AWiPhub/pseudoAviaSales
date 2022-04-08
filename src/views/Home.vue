@@ -375,7 +375,10 @@
                 <a-textarea v-model:value="clientInfo.address" :rows="4" />
               </a-form-item>
               <a-form-item label="Телефон">
-                <a-input v-model:value="clientInfo.phone" />
+                <a-input
+                  v-model:value="clientInfo.phone"
+                  @change="phonechanger"
+                />
               </a-form-item>
             </a-form>
           </a-card>
@@ -636,6 +639,23 @@ export default defineComponent({
       return current && current < moment(flyInTo.departureDate).endOf("day");
     };
 
+    const phonechanger = function () {
+      const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      let result = "";
+      const checkField = clientInfo.phone.split("");
+      checkField.map((symbol, index) => {
+        if (!numbers.includes(symbol)) {
+          symbol = "";
+        } else {
+          result += symbol;
+        }
+      });
+      if (result.length > 11) {
+        result = result.slice(0, -1);
+      }
+      clientInfo.phone = result;
+    };
+
     onMounted(() => {
       for (let index = 3; index < 200; index++) {
         const out =
@@ -687,6 +707,7 @@ export default defineComponent({
       cities,
       disabledDate,
       disabledReturnDate,
+      phonechanger,
     };
   },
 });
