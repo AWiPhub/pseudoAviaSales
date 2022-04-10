@@ -602,13 +602,14 @@ export default defineComponent({
 
       if (Object.keys(selectedHotel).length > 0) {
         return Math.round(
-          (selectedTicket["price"] * 2 * kolvo.value +
+          (selectedTicket["price"] * 2 +
             selectedHotel["priceDay"] * daysOfStay) *
-            (1 - discount.value / 100)
+            (1 - discount.value / 100) *
+            kolvo.value
         );
       } else {
         return Math.round(
-          selectedTicket["price"] * 2 * kolvo.value * (1 - discount.value / 100)
+          selectedTicket["price"] * 2 * (1 - discount.value / 100) * kolvo.value
         );
       }
     };
